@@ -6,26 +6,23 @@ namespace _1C_
     {
         static void Main()
         {
-            Console.WriteLine("Enter first num: ");
-            int num1 = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter second num: ");
-            int num2 = Convert.ToInt32(Console.ReadLine());
-            if (num1 < num2)
-            {
-                Console.WriteLine("Result: ");
-                for (int i = num1; i <= num2; i++)
-                {
-                    for (int j = 0; j < i; j++)
-                    {
-                        Console.Write(i + " ");
-                    }
-                    Console.WriteLine();
-                }
+            Console.WriteLine("Enter the length of the line: ");
+            int length = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter the placeholder symbol: ");
+            string symbol = Console.ReadLine();
+            Console.WriteLine("Enter the line direction (horizontal, vertical): ");
+            string direction = Console.ReadLine();
 
-            }
-            else
+            for (int i = 0; i < length; i++)
             {
-                Console.WriteLine("The first number must be less than the second number");
+                if (direction == "horizontal")
+                {
+                    Console.Write(symbol);
+                }
+                else if (direction == "vertical")
+                {
+                    Console.WriteLine(symbol);
+                }
             }
         }
     }
