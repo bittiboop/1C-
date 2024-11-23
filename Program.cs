@@ -6,24 +6,30 @@ namespace _1C_
     {
         static void Main()
         {
-            Console.WriteLine("Enter the length of the line: ");
-            int length = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter the placeholder symbol: ");
-            string symbol = Console.ReadLine();
-            Console.WriteLine("Enter the line direction (horizontal, vertical): ");
-            string direction = Console.ReadLine();
-
-            for (int i = 0; i < length; i++)
+            Console.WriteLine("Enter the number from 1 to 100: ");
+            int num = Convert.ToInt32(Console.ReadLine());
+            if (num < 1 || num > 100)
             {
-                if (direction == "horizontal")
-                {
-                    Console.Write(symbol);
-                }
-                else if (direction == "vertical")
-                {
-                    Console.WriteLine(symbol);
-                }
+                Console.WriteLine("The number is not in the range from 1 to 100");
+                return;
             }
+            if (num % 3 == 0 && num % 5 == 0)
+            {
+                Console.WriteLine("FizzBuzz");
+            }
+            else if (num % 3 == 0)
+            {
+                Console.WriteLine("Fizz");
+            }
+            else if (num % 5 == 0)
+            {
+                Console.WriteLine("Buzz");
+            }
+            else
+            {
+                Console.WriteLine(num);
+            }
+
         }
     }
 }
