@@ -4,34 +4,33 @@
     {
         static void Main()
         {
-            try
+            Console.WriteLine("Enter the upper limit of the range:");
+            int upperBound = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter the lower limit to the range:");
+            int lowerBound = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Fibonacci numbers in this range: ");
+            List<int> fibonacciNumbers = GetFibonacciNumbersInRange(lowerBound, upperBound);
+            foreach (int number in fibonacciNumbers) 
             {
+                Console.WriteLine(number);
+            }
 
-                Console.WriteLine("Enter a 6-digit number: ");
-                int num = Convert.ToInt32(Console.ReadLine());
-                int ReversedNum = 0;
-
-                if (num > 99999 && num < 1000000)
+            static List<int> GetFibonacciNumbersInRange(int lowerBound, int upperBound)
+            {
+                List<int> fibonacciNumbers = new List<int>();
+                int a = 0, b = 1;
+                while (a <= upperBound)
                 {
-                    while (num > 0)
+                    if (a >= upperBound)
                     {
-                        int remainder = num % 10;
-                        ReversedNum = (ReversedNum * 10) + remainder;
-                        num = num / 10;
+                        fibonacciNumbers.Add(a);
                     }
-                    Console.WriteLine(ReversedNum);
+                    int temp = a;
+                    a = temp;
+                    b = temp + b;
                 }
-                else
-                {
-                    Console.WriteLine("Please enter a 6-digit number.");
-                }
+                return fibonacciNumbers;
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-           
-            
         }
     }
 }
