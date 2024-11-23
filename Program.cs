@@ -1,35 +1,31 @@
-﻿namespace _1C_
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace _1C_
 {
     internal class Program
     {
         static void Main()
         {
-            Console.WriteLine("Enter the upper limit of the range:");
-            int upperBound = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter the lower limit to the range:");
-            int lowerBound = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Fibonacci numbers in this range: ");
-            List<int> fibonacciNumbers = GetFibonacciNumbersInRange(lowerBound, upperBound);
-            foreach (int number in fibonacciNumbers) 
+            Console.WriteLine("Enter first num: ");
+            int num1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter second num: ");
+            int num2 = Convert.ToInt32(Console.ReadLine());
+            if (num1 < num2)
             {
-                Console.WriteLine(number);
-            }
-
-            static List<int> GetFibonacciNumbersInRange(int lowerBound, int upperBound)
-            {
-                List<int> fibonacciNumbers = new List<int>();
-                int a = 0, b = 1;
-                while (a <= upperBound)
+                Console.WriteLine("Result: ");
+                for (int i = num1; i <= num2; i++)
                 {
-                    if (a >= upperBound)
+                    for (int j = 0; j < i; j++)
                     {
-                        fibonacciNumbers.Add(a);
+                        Console.Write(i + " ");
                     }
-                    int temp = a;
-                    a = temp;
-                    b = temp + b;
+                    Console.WriteLine();
                 }
-                return fibonacciNumbers;
+
+            }
+            else
+            {
+                Console.WriteLine("The first number must be less than the second number");
             }
         }
     }
