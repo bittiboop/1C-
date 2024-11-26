@@ -1,36 +1,45 @@
-﻿namespace _1C_
+﻿using System.Xml.Linq;
+
+namespace _1C_
 {
     internal class Program
     {
         static void Main()
         {
-            Console.WriteLine("Enter 6-digit number: ");
-            string number = Console.ReadLine();
+            //The user enters the date from the keyboard. The application has
+            //display the name of the season and day of the week.For example,
+            //if entered as 12 / 22 / 2021, the app should display Winter
+            //Wednesday.
 
-            if (number.Length != 6)
+            Console.WriteLine("Enter the date in the format dd/mm/yyyy: ");
+            string date = Console.ReadLine();
+            string[] dateArray = date.Split('/');
+            int day = int.Parse(dateArray[0]);
+            int month = int.Parse(dateArray[1]);
+            int year = int.Parse(dateArray[2]);
+
+            DateTime dateTime = new DateTime(year, month, day);
+            string season = "";
+            if (dateTime.Month == 12 || dateTime.Month == 1 || dateTime.Month == 2)
             {
-                Console.WriteLine("Invalid number");
-                return;
+                season = "Winter";
             }
-            char[] digits = number.ToCharArray();
-            Console.WriteLine("Enter bit numbers to replace: ");
-            if(!int.TryParse(Console.ReadLine(), out int bit1) || !int.TryParse(Console.ReadLine(), out int bit2))
+            else if (dateTime.Month == 3 || dateTime.Month == 4 || dateTime.Month == 5)
             {
-                Console.WriteLine("Invalid bit number");
-                return;
+                season = "Spring";
             }
-            
-            Console.WriteLine("Enter new bit: ");
-            if (!int.TryParse(Console.ReadLine(), out int newBit))
+            else if (dateTime.Month == 6 || dateTime.Month == 7 || dateTime.Month == 8)
             {
-                Console.WriteLine("Invalid new bit");
-                return;
+                season = "Summer";
+            }
+            else if (dateTime.Month == 9 || dateTime.Month == 10 || dateTime.Month == 11)
+            {
+                season = "Autumn";
             }
 
-            char newDigit = Console.ReadKey().KeyChar;
-            digits[bit1 - 1] = newDigit;
-            string newNumber = new string(digits);
-            Console.WriteLine($"\nNew number: {newNumber}");
+            string dayOfWeek = dateTime.DayOfWeek.ToString();
+            Console.WriteLine($"{season} {dayOfWeek}");
+
         }
     }
 }
