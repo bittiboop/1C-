@@ -1,5 +1,8 @@
-﻿using System.Security.Cryptography;
+﻿using System.Diagnostics.Metrics;
+using System;
+using System.Security.Cryptography;
 using System.Xml.Linq;
+using System.Text;
 
 namespace _1C_
 {
@@ -8,30 +11,24 @@ namespace _1C_
         static void Main()
         {
 
-            Console.WriteLine("Choose the Fahrenheit or Celsius: ");
-            Console.WriteLine("1. Fahrenheit");
-            Console.WriteLine("2. Celsius");
-            int choice = int.Parse(Console.ReadLine());
-            double temperature;
-            double result;
-            switch (choice)
+            Console.WriteLine("Enter two numbers for range: ");
+            int num1 = Convert.ToInt32(Console.ReadLine());
+            int num2 = Convert.ToInt32(Console.ReadLine());
+            if (num1 > num2)
             {
-                case 1:
-                    Console.WriteLine("Enter the temperature in Fahrenheit: ");
-                    temperature = double.Parse(Console.ReadLine());
-                    result = (temperature - 32) * 5 / 9;
-                    Console.WriteLine("Temperature in Celsius: " + result);
-                    break;
-                case 2:
-                    Console.WriteLine("Enter the temperature in Celsius: ");
-                    temperature = double.Parse(Console.ReadLine());
-                    result = temperature * 9 / 5 + 32;
-                    Console.WriteLine("Temperature in Fahrenheit: " + result);
-                    break;
-                default:
-                    Console.WriteLine("Invalid choice");
-                    break;
+                int temp = num1;
+                num1 = num2;
+                num2 = temp;
             }
+            Console.WriteLine("Even numbers in the range are: ");
+            for (int i = num1; i <= num2; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    Console.WriteLine(i);
+                }
+            }
+
         }
     }
 }
