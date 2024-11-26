@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using System.Security.Cryptography;
+using System.Xml.Linq;
 
 namespace _1C_
 {
@@ -7,35 +8,30 @@ namespace _1C_
         static void Main()
         {
 
-            Console.WriteLine("Enter the date in the format dd/mm/yyyy: ");
-            string date = Console.ReadLine();
-            string[] dateArray = date.Split('/');
-            int day = int.Parse(dateArray[0]);
-            int month = int.Parse(dateArray[1]);
-            int year = int.Parse(dateArray[2]);
-
-            DateTime dateTime = new DateTime(year, month, day);
-            string season = "";
-            if (dateTime.Month == 12 || dateTime.Month == 1 || dateTime.Month == 2)
+            Console.WriteLine("Choose the Fahrenheit or Celsius: ");
+            Console.WriteLine("1. Fahrenheit");
+            Console.WriteLine("2. Celsius");
+            int choice = int.Parse(Console.ReadLine());
+            double temperature;
+            double result;
+            switch (choice)
             {
-                season = "Winter";
+                case 1:
+                    Console.WriteLine("Enter the temperature in Fahrenheit: ");
+                    temperature = double.Parse(Console.ReadLine());
+                    result = (temperature - 32) * 5 / 9;
+                    Console.WriteLine("Temperature in Celsius: " + result);
+                    break;
+                case 2:
+                    Console.WriteLine("Enter the temperature in Celsius: ");
+                    temperature = double.Parse(Console.ReadLine());
+                    result = temperature * 9 / 5 + 32;
+                    Console.WriteLine("Temperature in Fahrenheit: " + result);
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice");
+                    break;
             }
-            else if (dateTime.Month == 3 || dateTime.Month == 4 || dateTime.Month == 5)
-            {
-                season = "Spring";
-            }
-            else if (dateTime.Month == 6 || dateTime.Month == 7 || dateTime.Month == 8)
-            {
-                season = "Summer";
-            }
-            else if (dateTime.Month == 9 || dateTime.Month == 10 || dateTime.Month == 11)
-            {
-                season = "Autumn";
-            }
-
-            string dayOfWeek = dateTime.DayOfWeek.ToString();
-            Console.WriteLine($"{season} {dayOfWeek}");
-
         }
     }
 }
