@@ -6,10 +6,6 @@ namespace _1C_
     {
         static void Main()
         {
-            //The user enters the date from the keyboard. The application has
-            //display the name of the season and day of the week.For example,
-            //if entered as 12 / 22 / 2021, the app should display Winter
-            //Wednesday.
 
             Console.WriteLine("Enter the date in the format dd/mm/yyyy: ");
             string date = Console.ReadLine();
